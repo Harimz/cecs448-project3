@@ -10,8 +10,6 @@ const Page = async ({ params }: { params: Promise<{ class: string[] }> }) => {
 
   return (
     <div className="w-[95%] mx-auto mt-6">
-      <Header classTitle={classTitle} />
-
       <PlanCard />
     </div>
   );

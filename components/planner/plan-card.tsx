@@ -12,67 +12,61 @@ import {
   Settings,
   X,
 } from "lucide-react";
+import Planner from "./Planner";
 import { Button } from "../ui/button";
 import { Assignment } from "./assignment";
 import { ScrollArea } from "../ui/scroll-area";
 
+const resources = [
+  {
+    id: "a1",
+    name: "Project 3",
+    type: "other",
+    details: {image: "/homework.png"},
+  },
+  {
+    id: "a2",
+    name: "Homework 5",
+    type: "other",
+    details: {image: "/homework.png"},
+  },
+  {
+    id: "a3",
+    name: "Midterm II",
+    type: "other",
+    details: {image: "/homework.png"},
+  },
+  {
+    id: "a4",
+    name: "Study",
+    type: "other",
+    details: {image: "/homework.png"},
+  }
+];
+
+const appointments = [
+  {
+    id: "a1",
+    title: "Weekly Sync",
+    start: new Date("2025-01-01T09:00"),
+    end: new Date("2025-01-01T10:00"),
+    resourceId: "r1",
+    order: 0,
+    details: { notes: "Bring slides" },
+  },
+  {
+    id: "a2",
+    title: "Setup Equipment",
+    start: new Date("2025-01-01T10:30"),
+    end: new Date("2025-01-01T11:15"),
+    resourceId: "r2",
+    order: 1,
+    details: { items: ["projector"] },
+  },
+];
+
 export const PlanCard = () => {
   return (
-    <div className="rounded-md w-full shadow-sm p-4 flex gap-6 h-[30rem]">
-      <div className="w-[20%]">
-        <div className="relative">
-          <Input placeholder="Filter Assignments..." className="pl-10" />
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute size-4 text-[#219ebc] top-2.5 left-2.5 cursor-pointer hover:text-[#219ebc]/25"
-          >
-            <Filter />
-          </Button>
-        </div>
-
-        <ScrollArea className="h-full">
-          <Assignment name="Project 3" />
-          <Assignment name="Homework 5" />
-          <Assignment name="Midterm II" />
-          <Assignment name="Study" />
-        </ScrollArea>
-      </div>
-
-      <div className="w-full">
-        <div className="flex items-center justify-between">
-          <X className="size-4" />
-
-          <div className="flex gap-12">
-            <div className="flex items-center gap-4">
-              <Button className="bg-[#219ebc] hover:bg-[#219ebc]/75 cursor-pointer">
-                Create
-              </Button>
-
-              <Button variant="outline" className="cursor-pointer">
-                Delete
-              </Button>
-
-              <Button variant="ghost" className="cursor-pointer">
-                Select All
-              </Button>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <Button size="icon" variant="outline" className="cursor-pointer">
-                <Fullscreen />
-              </Button>
-              <Button size="icon" variant="outline" className="cursor-pointer">
-                <Pointer />
-              </Button>
-              <Button size="icon" variant="outline" className="cursor-pointer">
-                <Settings />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+		<Planner initialAppointments={appointments} initialResources={resources} />
+   );
 };
