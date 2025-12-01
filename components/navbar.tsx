@@ -37,7 +37,9 @@ export const Navbar = () => {
               text={item.text}
               href={item.href}
               key={i}
-              active={path === item.href}
+              active={
+                item.href === "/" ? path === "/" : path.startsWith(item.href)
+              }
             />
           ))}
         </div>

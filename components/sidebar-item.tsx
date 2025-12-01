@@ -52,7 +52,6 @@ export const SidebarItem = ({ title, Icon }: Props) => {
         {" "}
         <SidebarFolder title="CECS 448" />
         <SidebarFolder title="CECS 329" />
-        <SidebarFolder title="CECS 449" />
       </div>
     </div>
   );
