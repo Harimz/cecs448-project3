@@ -30,6 +30,7 @@ import {
 import { Button } from "../ui/button";
 import { Assignment } from "./assignment";
 import { ScrollArea } from "../ui/scroll-area";
+import { WorkloadSummary } from "./WorkloadSummary";
 
 
 
@@ -65,11 +66,10 @@ const PlannerMainComponent: FC<PlannerMainComponentProps> = ({
 	initialResources,
 	...props }) => {
   return (
-
-    <div className="rounded-md w-full shadow-sm p-4 flex gap-6 h-[30rem]">
+    <div className="rounded-md w-full shadow-sm p-4 flex flex-col gap-6">
     	<div className="flex flex-col gap-2 max-w-[80vw] min-w-0">
 				<PlannerHeader classTitle="hi"/>
-				<div className="flex flex-row">
+				<div className="flex flex-row h-[30rem]">
 	    	  <div className="w-[20%]">
 	    	    <div className="relative">
 	    	      <Input placeholder="Filter Assignments..." className="pl-10" />
@@ -97,6 +97,7 @@ const PlannerMainComponent: FC<PlannerMainComponentProps> = ({
 					</div>
 				</div>
     	</div>
+		<WorkloadSummary />
 		</div>
   );
 };
