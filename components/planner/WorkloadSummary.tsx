@@ -22,7 +22,9 @@ const WorkloadCard: React.FC<WorkloadCardProps> = ({
     <Card className={cn("flex flex-col shadow-sm", colorClass)}>
       <CardHeader className="flex flex-row items-center gap-3 pb-2">
         <div className="p-2 rounded-md bg-white/80 shadow-sm">{icon}</div>
-        <CardTitle className="text-sm font-semibold text-foreground">{title}</CardTitle>
+        <CardTitle className="text-sm font-semibold text-foreground">
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-3 pt-0">
         <p className="text-xs text-muted-foreground">{description}</p>
@@ -38,23 +40,22 @@ const WorkloadCard: React.FC<WorkloadCardProps> = ({
 export const WorkloadSummary: React.FC = () => {
   return (
     <div className="mt-6 w-full">
-      <h3 className="text-lg font-semibold mb-4">Workload Summary</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <WorkloadCard
-          title="TRANSLATION ASSIGNMENTS"
-          description="User workload with translation assignments"
+          title="UPCOMING ASSIGNMENTS"
+          description="Upcoming assignments that I need to go over"
           icon={<Languages className="h-5 w-5 text-blue-600" />}
           colorClass="bg-blue-50/80 border-blue-200"
         />
         <WorkloadCard
           title="REVIEW ASSIGNMENTS"
-          description="User workload with review assignments"
+          description="Go over completed assignments before submission"
           icon={<MessageSquare className="h-5 w-5 text-purple-600" />}
           colorClass="bg-purple-50/80 border-purple-200"
         />
         <WorkloadCard
-          title="CONTRIBUTION ASSIGNMENTS"
-          description="User workload with contribution assignments"
+          title="Project Contributions"
+          description="Organize projects with fellow group members"
           icon={<FilePenLine className="h-5 w-5 text-pink-600" />}
           colorClass="bg-pink-50/80 border-pink-200"
         />
@@ -62,4 +63,3 @@ export const WorkloadSummary: React.FC = () => {
     </div>
   );
 };
-

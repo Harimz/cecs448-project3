@@ -24,8 +24,6 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = ({
 }) => {
   const { addResource, addAppointment } = useData();
 
-
-
   return (
     <div
       className={cn("flex flex-col justify-end space-x-2", className)}
@@ -36,8 +34,7 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = ({
 
         <div className="flex gap-12">
           <div className="flex items-center gap-4">
-
-						<AddAppointmentDialog />
+            <AddAppointmentDialog />
 
             <Button variant="outline" className="cursor-pointer">
               Delete
@@ -61,7 +58,6 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = ({
           </div>
         </div>
       </div>
-
     </div>
   );
 };

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { PlannerProvider, useCalendar } from "@/contexts/PlannerContext";
 import {
   PlannerDataContextProvider,
@@ -31,9 +31,7 @@ import { Button } from "../ui/button";
 import { Assignment } from "./assignment";
 import { ScrollArea } from "../ui/scroll-area";
 import { WorkloadSummary } from "./WorkloadSummary";
-
-
-
+import { AssignmentPlanner } from "./assignment-planner";
 
 export interface PlannerProps extends React.HTMLAttributes<HTMLDivElement> {
   initialResources: Resource[];
@@ -46,64 +44,69 @@ const Planner: React.FC<PlannerProps> = ({
   ...props
 }) => {
   return (
-    <PlannerDataContextProvider
-      initialAppointments={initialAppointments}
-      initialResources={initialResources}
-    >
-      <PlannerProvider>
-        <PlannerMainComponent initialResources={initialResources}  />
-      </PlannerProvider>
-    </PlannerDataContextProvider>
+    <div className="overflow-hidden">
+      <PlannerDataContextProvider
+        initialAppointments={initialAppointments}
+        initialResources={initialResources}
+      >
+        <PlannerProvider>
+          <PlannerMainComponent initialResources={initialResources} />
+          <h3 className="text-lg font-semibold mb-4 mt-12">Calendar</h3>
+
+          <div className="w-full mt-6">
+            <CalendarContent />
+          </div>
+        </PlannerProvider>
+      </PlannerDataContextProvider>
+    </div>
   );
 };
 
 export interface PlannerMainComponentProps
   extends React.HTMLAttributes<HTMLDivElement> {
   initialResources: Resource[];
-	}
+}
 
-const PlannerMainComponent: FC<PlannerMainComponentProps> = ({ 
-	initialResources,
-	...props }) => {
+const PlannerMainComponent: FC<PlannerMainComponentProps> = ({
+  initialResources,
+  ...props
+}) => {
   return (
     <div className="rounded-md w-full shadow-sm p-4 flex flex-col gap-6">
-    	<div className="flex flex-col gap-2 max-w-[80vw] min-w-0">
-				<PlannerHeader classTitle="hi"/>
-				<div className="flex flex-row h-[30rem]">
-	    	  <div className="w-[20%]">
-	    	    <div className="relative">
-	    	      <Input placeholder="Filter Assignments..." className="pl-10" />
-	
-	    	      <Button
-	    	        variant="ghost"
-	    	        size="icon"
-	    	        className="absolute size-4 text-[#219ebc] top-2.5 left-2.5 cursor-pointer hover:text-[#219ebc]/25"
-	    	      >
-	    	        <Filter />
-	    	      </Button>
-	    	    </div>
-	
-	    	    <ScrollArea className="h-full">
-  							  {initialResources.map((item) => (
-  							    <Assignment key={item.id} name={item.name} />
-  							  ))}
-	    	    </ScrollArea>
-	    	  </div>
-					<div className="ml-[5rem] flex flex-col">
-	    	  	<CalendarToolbar />
-						<div className="overflow-hidden">
-	    	  		<CalendarContent {...props} />
-						</div>
-					</div>
-				</div>
-    	</div>
-		<WorkloadSummary />
-		</div>
+      <div className="flex flex-col gap-2 max-w-[80vw] min-w-0">
+        <div className="flex flex-row h-[30rem]">
+          <div className="w-[20%]">
+            <div className="relative">
+              <Input placeholder="Filter Assignments..." className="pl-10" />
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute size-4 text-[#219ebc] top-2.5 left-2.5 cursor-pointer hover:text-[#219ebc]/25"
+              >
+                <Filter />
+              </Button>
+            </div>
+
+            <ScrollArea className="h-full">
+              {initialResources.map((item) => (
+                <Assignment key={item.id} name={item.name} />
+              ))}
+            </ScrollArea>
+          </div>
+
+          <div className="ml-[5rem] w-[80%] flex flex-col">
+            <CalendarToolbar />
+
+            <AssignmentPlanner />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
-interface CalendarContentProps extends React.HTMLAttributes<HTMLDivElement> {}
-const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
+const CalendarContent = () => {
   const { viewMode, dateRange, timeLabels } = useCalendar();
   const { resources, appointments, updateAppointment } = useData();
 
@@ -116,12 +119,12 @@ const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
         if (!destination || !sourceData) return;
 
         const appointment = appointments.find(
-          (appt) => appt.id === sourceData.appointmentId,
+          (appt) => appt.id === sourceData.appointmentId
         );
         if (!appointment) return;
 
         const newResource = resources.find(
-          (res) => res.id === destination.resourceId,
+          (res) => res.id === destination.resourceId
         );
         if (!newResource) return;
 
@@ -132,7 +135,7 @@ const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
           {
             from: appointment.start,
             to: appointment.end,
-          },
+          }
         );
 
         updateAppointment({
@@ -146,7 +149,7 @@ const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
   }, [appointments]);
 
   return (
-    <div className="flex max-h-[calc(80vh_-_theme(spacing.16))] max-w-[calc(70vw_-_theme(spacing.16))] border-1 flex-col">
+    <div className="flex max-h-[calc(80vh_-_theme(spacing.16))] max-w-[112rem] border-1 flex-col">
       <div className="calendar-scroll flex-grow overflow-auto">
         <Table>
           <Timeline />
@@ -163,8 +166,8 @@ const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
                             appt,
                             index,
                             dateRange,
-                            viewMode,
-                          ) && appt.resourceId === resource.id,
+                            viewMode
+                          ) && appt.resourceId === resource.id
                       )
                       .sort((a, b) => a.start.getTime() - b.start.getTime());
 
@@ -177,7 +180,9 @@ const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
                         key={index}
                         className="relative border border-gray-200"
                         style={{
-                          height: `${viewMode === "day" ? dynamicHeight : undefined}px`,
+                          height: `${
+                            viewMode === "day" ? dynamicHeight : undefined
+                          }px`,
                         }}
                       >
                         {filteredAppointments.map((appt, i) => (
