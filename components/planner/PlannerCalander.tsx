@@ -19,46 +19,46 @@ const initialResources = [
     id: "a1",
     name: "Project 3",
     type: "other",
-    details: { image: "/homework.png" },
+    details: {image: "/homework.png"},
   },
   {
     id: "a2",
     name: "Homework 5",
     type: "other",
-    details: { image: "/homework.png" },
+    details: {image: "/homework.png"},
   },
   {
     id: "a3",
     name: "Midterm II",
     type: "other",
-    details: { image: "/homework.png" },
+    details: {image: "/homework.png"},
   },
   {
     id: "a4",
     name: "Study",
     type: "other",
-    details: { image: "/homework.png" },
-  },
+    details: {image: "/homework.png"},
+  }
 ];
 
 const initialAppointments = [
   {
     id: "a1",
-    title: "Weekly Sync",
-    start: new Date("2025-01-01T09:00"),
-    end: new Date("2025-01-01T10:00"),
+    title: "Martin",
+    start: new Date("2025-12-06T09:00"),
+    end: new Date("2025-12-07T10:00"),
     resourceId: "r1",
     order: 0,
-    details: { notes: "Bring slides" },
+    details: {},
   },
   {
     id: "a2",
-    title: "Setup Equipment",
-    start: new Date("2025-01-01T10:30"),
-    end: new Date("2025-01-01T11:15"),
+    title: "Wissam",
+    start: new Date("2025-12-01T10:30"),
+    end: new Date("2025-12-02T11:15"),
     resourceId: "r2",
     order: 1,
-    details: { items: ["projector"] },
+    details: {},
   },
 ];
 

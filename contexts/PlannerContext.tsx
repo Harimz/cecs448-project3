@@ -27,8 +27,8 @@ export const PlannerProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [dateRange, setDateRange] = useState<DateRange>({
-    from: startOfDay(new Date()),
-    to: endOfDay(new Date()),
+    from: startOfDay(new Date("2025-12-14T00:00")),
+    to: endOfDay(new Date("2025-12-20T00:00")),
   });
 
   const viewMode = useMemo(() => {

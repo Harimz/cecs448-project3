@@ -19,26 +19,26 @@ import { ScrollArea } from "../ui/scroll-area";
 
 const resources = [
   {
-    id: "a1",
+    id: "r1",
     name: "Project 3",
     type: "other",
     details: {image: "/homework.png"},
   },
   {
-    id: "a2",
+    id: "r2",
     name: "Homework 5",
     type: "other",
     details: {image: "/homework.png"},
   },
   {
-    id: "a3",
+    id: "r3",
     name: "Midterm II",
     type: "other",
     details: {image: "/homework.png"},
   },
   {
-    id: "a4",
-    name: "Study",
+    id: "r4",
+    name: "Homework 2",
     type: "other",
     details: {image: "/homework.png"},
   }
@@ -47,21 +47,30 @@ const resources = [
 const appointments = [
   {
     id: "a1",
-    title: "Weekly Sync",
-    start: new Date("2025-01-01T09:00"),
-    end: new Date("2025-01-01T10:00"),
+    title: "Demonstrate simple interpolated animation of 3D",
+    start: new Date("2025-12-14T00:01"),
+    end: new Date("2025-12-14T10:00"),
     resourceId: "r1",
     order: 0,
-    details: { notes: "Bring slides" },
+    details: {},
   },
   {
     id: "a2",
-    title: "Setup Equipment",
-    start: new Date("2025-01-01T10:30"),
-    end: new Date("2025-01-01T11:15"),
+    title: "Demo project homework 5 and test",
+    start: new Date("2025-12-19T10:30"),
+    end: new Date("2025-12-19T11:15"),
     resourceId: "r2",
     order: 1,
-    details: { items: ["projector"] },
+    details: {},
+  },
+  {
+    id: "a3",
+    title: "Study Group, Prepare for upcoming exam",
+    start: new Date("2025-12-17T10:30"),
+    end: new Date("2025-12-17T11:15"),
+    resourceId: "r3",
+    order: 1,
+    details: {},
   },
 ];
 

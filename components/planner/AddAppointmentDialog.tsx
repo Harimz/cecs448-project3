@@ -62,7 +62,7 @@ const AddAppointmentDialog: React.FC = () => {
     const id = crypto.randomUUID();
     const newAppointment: AppointmentType = {
       details: {
-        service: "Music",
+        service: "Homework",
       },
       order: 0,
       id: id,
