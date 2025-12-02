@@ -50,7 +50,7 @@ const Planner: React.FC<PlannerProps> = ({
         initialResources={initialResources}
       >
         <PlannerProvider>
-          <PlannerMainComponent initialResources={initialResources} />
+          <PlannerMainComponent initialAppointments={initialAppointments} />
           <h3 className="text-lg font-semibold mb-4 mt-12">Calendar</h3>
 
           <div className="w-full mt-6">
@@ -68,7 +68,7 @@ export interface PlannerMainComponentProps
 }
 
 const PlannerMainComponent: FC<PlannerMainComponentProps> = ({
-  initialResources,
+  initialAppointments,
   ...props
 }) => {
   return (
@@ -89,8 +89,8 @@ const PlannerMainComponent: FC<PlannerMainComponentProps> = ({
             </div>
 
             <ScrollArea className="h-full">
-              {initialResources.map((item) => (
-                <Assignment key={item.id} name={item.name} />
+              {initialAppointments.map((item) => (
+                <Assignment key={item.id} name={item.title} />
               ))}
             </ScrollArea>
           </div>
