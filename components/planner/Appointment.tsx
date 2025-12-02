@@ -241,10 +241,6 @@ const Appointment: React.FC<AppointmentProps> = ({
       >
         <div className="flex flex-col items-center gap-2 text-xs">
           <div>{appointment.title}</div>
-          <div>
-            {format(new Date(appointment.start), "kk:mm")} -{" "}
-            {format(new Date(appointment.end), "kk:mm")}
-          </div>
         </div>
       </CardContent>
     </Card>
